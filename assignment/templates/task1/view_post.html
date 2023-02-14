@@ -1,20 +1,31 @@
 {%extends 'task1/main.html'%}
+<!-- {%load static%} -->
 {%block content%}
 <style>
     .post-detail-container{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
+    .post_media{
+        width: 600px;
+        height: inherit;
+    }
 </style>
 <div class="post-detail-container">
-<div>a</div>
+<div></div>
 <div>
     <!-- {{all_posts.count}} -->
     {%for po in all%}
-    <img src="{{imageSource}}"/>
+    <h1 style="margin:0px">{{po.title}}</h1>
+    <div class="post-detail-container">
+        <div>@{{po.author}}</div>
+        <div></div>
+        <div>{{po.published_date}}</div><br/>
+    </div>
+    <img class="post_media" src="/media/{{po.image}}"/>
     {{po.content}}
     {%endfor%}
 </div>
-<div>c</div>
+<div></div>
 </div>
 {%endblock%}

@@ -9,9 +9,11 @@
 <a href="{% url 'postsInsert'%}">New Post</a>
 <div class="post-container">
     <div>
+        {%if request.user.is_authenticated%}
         <div><a href="{%url 'home'%}?q=all"  name="all">All</a></div>
         <div><a href="{%url 'home'%}?q=published"  name="published">Published</a></div>
         <div><a href="{%url 'home'%}?q=drafts" name ="drafts" >Drafts</a></div>
+        {%endif%}
     </div>
     <dev>
       <h4>  {{count}} Blogs Available</h4>
