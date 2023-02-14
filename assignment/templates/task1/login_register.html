@@ -1,0 +1,12 @@
+{% extends 'task1/main.html'%}
+{%block content%}
+<form method="POST" >
+    {%csrf_token%}
+    <br/><br/><br/><br/><br/><br/><br/>
+    <label>UserName :</label>
+    <input type="text" name="username" placeholder="Enter UserName "/><br/><br/>
+    <label>Password : </label>
+    <input type="password" name="password" /><br/>
+    <input type="submit" value="Login"/>
+</form>
+{%endblock%}

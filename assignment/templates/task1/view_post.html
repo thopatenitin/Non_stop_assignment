@@ -1,0 +1,20 @@
+{%extends 'task1/main.html'%}
+{%block content%}
+<style>
+    .post-detail-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+</style>
+<div class="post-detail-container">
+<div>a</div>
+<div>
+    <!-- {{all_posts.count}} -->
+    {%for po in all%}
+    <img src="{{imageSource}}"/>
+    {{po.content}}
+    {%endfor%}
+</div>
+<div>c</div>
+</div>
+{%endblock%}

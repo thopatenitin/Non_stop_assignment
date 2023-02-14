@@ -1,0 +1,36 @@
+{%extends 'task1/main.html'%}
+{%block content%}
+<style>
+    .post-container{
+        display: grid;
+        grid-template-columns: 1fr 7fr;
+    }
+</style>
+<a href="{% url 'postsInsert'%}">New Post</a>
+<div class="post-container">
+    <div>
+        <div><a href="{%url 'home'%}?q=all"  name="all">All</a></div>
+        <div><a href="{%url 'home'%}?q=published"  name="published">Published</a></div>
+        <div><a href="{%url 'home'%}?q=drafts" name ="drafts" >Drafts</a></div>
+    </div>
+    <dev>
+      <h4>  {{count}} Blogs Available</h4>
+      <hr/>
+{%for post in posts%}
+    <span>@{{post.author}}</span><br/>
+    {%if post.author == request.user%}
+    <a href="{%url 'update_post' post.id%}">Edit</a> || 
+    <a href="{% url 'delete_post' post.id %}">Delete</a>
+    {%if post.published == False %}
+    || 
+    <a href="{% url 'publish_post' post.id %}">Publish</a>
+
+    {%endif%}
+    {%endif%}
+  <a href="{%url 'view_post' post.id%}"><h2> {{post.title}}</h2></a>
+    <p>{{post.published_date}}</p>
+    <hr/>
+{%endfor%}
+</dev>
+</div>
+{%endblock%}

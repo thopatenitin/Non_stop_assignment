@@ -1,0 +1,24 @@
+{%extends 'task1/main.html'%}
+{%block content%}
+<div>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <label >Publish Now</label>
+        <input type="checkbox" id="publish" value="{{True}}" name="publish">
+        <br/>
+        <br/>
+        <input type="submit" name="post" value="Submit"/>
+        
+        {% if errors %}
+        <ul>
+          {% for field, errors in errors.items %}
+            <li>{{ field }}: {{ errors|join:", " }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+    </form>
+    {{ form.media }}
+</div>
+{%endblock%}
